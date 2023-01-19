@@ -14,7 +14,7 @@ services:
     image: postgres:14.1-alpine
     restart: always
     environment:
-      - POSTGRES_DB=app
+      - POSTGRES_DB=admin
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
