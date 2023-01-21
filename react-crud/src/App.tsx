@@ -1,13 +1,15 @@
 import React from "react";
-
-import Navbar from "./components/Navbar";
 import "./App.css";
+
+import Menu from "./components/Menu";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <div className="container-fluid">
+        <Menu />
         <div className="row">
           <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <h2>Section title</h2>
