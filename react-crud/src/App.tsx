@@ -1,27 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
+
+import Navbar from "./components/Navbar";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <div className="container-fluid">
         <div className="row">
-          <nav
-            id="sidebarMenu"
-            className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
-          >
-            <div className="position-sticky pt-3 sidebar-sticky">
-              <ul className="nav flex-column">
-                <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
-                    Dashboard
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-
           <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <h2>Section title</h2>
             <div className="table-responsive">
