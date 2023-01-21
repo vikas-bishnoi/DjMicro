@@ -42,7 +42,6 @@ def index():
 def like(id):
     req = requests.get('http://host.docker.internal:8000/api/user')
     json = req.json()
-
     try:
         product_user = ProductUser(user_id=json['id'], product_id=id)
         db.session.add(product_user)
