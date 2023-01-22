@@ -1,9 +1,9 @@
 import React from "react";
+import Wrapper from "./Wrapper";
 
 const Products = () => {
   return (
-    <>
-      {" "}
+    <Wrapper>
       <h2>Section title</h2>
       <div className="table-responsive">
         <table className="table table-striped table-sm">
@@ -27,7 +27,7 @@ const Products = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </Wrapper>
   );
 };
 
