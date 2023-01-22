@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Product } from "../interfaces/product";
 import Wrapper from "./Wrapper";
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const response = await fetch("http://localhost:8000/api/products");
+      const data = await response.json();
+      setProducts(data);
+    };
+
+    getProducts();
+  }, []);
+
   return (
     <Wrapper>
       <h2>Section title</h2>
@@ -10,20 +23,26 @@ const Products = () => {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
+              <th scope="col">Image</th>
+              <th scope="col">Title</th>
+              <th scope="col">Likes</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
+            {products.map((product: Product) => {
+              return (
+                <tr key={product.id}>
+                  <td>{product.id}</td>
+                  <td>
+                    <img src={product.image} alt={product.title} height="180" />
+                  </td>
+                  <td>{product.title}</td>
+                  <td>{product.likes}</td>
+                  <td></td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
