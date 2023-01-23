@@ -3,10 +3,9 @@ import "./App.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Menu from "./components/Menu";
-import Navbar from "./components/Navbar";
-import Products from "./admin/Products";
 import Main from "./main/Main";
+import Products from "./admin/Products";
+import ProductCreate from "./admin/ProductCreate";
 
 function App() {
   return (
@@ -15,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="admin/products" element={<Products />} />
+          <Route path="admin/products/create" element={<ProductCreate />} />
         </Routes>
       </Router>
     </div>

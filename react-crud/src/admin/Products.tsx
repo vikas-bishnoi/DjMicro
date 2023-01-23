@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Product } from "../interfaces/product";
 import Wrapper from "./Wrapper";
 
@@ -27,7 +28,16 @@ const Products = () => {
 
   return (
     <Wrapper>
-      <h2>Section title</h2>
+      <div className="pt-3 pb-2 mb-3 border-bottom">
+        <div className="btn-toolbar mb2 mb-md-8">
+          <Link
+            to="/admin/products/create"
+            className="btn btn-sm btn-outline-secondary"
+          >
+            Add
+          </Link>
+        </div>
+      </div>
       <div className="table-responsive">
         <table className="table table-striped table-sm">
           <thead>
