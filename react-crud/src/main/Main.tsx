@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Product } from "../interfaces/product";
 
 const Main = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([] as Product[]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -13,6 +13,20 @@ const Main = () => {
 
     getProducts();
   }, []);
+
+  const like = async (id: number) => {
+    await fetch("http://localhost:8001/api/products", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+    const updatedProducts = products.map((product: Product) => {
+      if (product.id === id) {
+        product.likes += 1;
+      }
+      return product;
+    });
+    setProducts(updatedProducts);
+  };
   return (
     <>
       <main>
@@ -31,6 +45,7 @@ const Main = () => {
                             <button
                               type="button"
                               className="btn btn-sm btn-outline-secondary"
+                              onClick={() => like(product.id)}
                             >
                               Like
                             </button>
