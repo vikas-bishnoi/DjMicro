@@ -23,9 +23,9 @@ def callback(channel, method, properties, body):
     
     elif properties.content_type == 'product_updated':
         product = Product.query.get(data['id'])
-        product.title = data['title']
-        product.image = data['image']
         with app.app_context():
+            product.title = data['title']
+            product.image = data['image']
             print('updated product')
             db.session.commit()
     

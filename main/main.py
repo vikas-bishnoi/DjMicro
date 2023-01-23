@@ -46,9 +46,10 @@ def like(id):
         product_user = ProductUser(user_id=json['id'], product_id=id)
         db.session.add(product_user)
         db.session.commit()
-
         # event
         publish('product_liked', id)
+        print(product_user)
+
     except:
         abort(400, "you already liked this product")
 

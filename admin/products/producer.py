@@ -7,4 +7,5 @@ channel = connection.channel()
 
 def publish(method, body):
     properties = pika.BasicProperties(method)
+    print(method)
     channel.basic_publish(exchange='', routing_key='main', body=json.dumps(body), properties=properties)

@@ -15,7 +15,7 @@ const Main = () => {
   }, []);
 
   const like = async (id: number) => {
-    await fetch("http://localhost:8001/api/products", {
+    await fetch(`http://localhost:8001/api/products/${id}/like`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     });
@@ -35,7 +35,7 @@ const Main = () => {
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
               {products.map((product: Product) => {
                 return (
-                  <div className="col">
+                  <div className="col" key={product.id}>
                     <div className="card shadow-sm">
                       <img src={product.image} height="180" alt="" />
                       <div className="card-body">
