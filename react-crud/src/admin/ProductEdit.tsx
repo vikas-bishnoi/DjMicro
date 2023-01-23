@@ -1,16 +1,32 @@
-import React, { SyntheticEvent, useState } from "react";
-import { redirect } from "react-router-dom";
+import React, { SyntheticEvent, useState, useEffect } from "react";
+import { redirect, useParams } from "react-router-dom";
+import { Product } from "../interfaces/product";
 import Wrapper from "./Wrapper";
 
-const ProductCreate = () => {
+const ProductEdit = () => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
 
+  const params = useParams();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      console.log(params);
+      const response = await fetch(
+        `http://localhost:8000/api/products/${params.id}`
+      );
+      const product: Product = await response.json();
+      setTitle(product.title);
+      setImage(product.image);
+    };
+
+    getProduct();
+  }, []);
   const submit = async (e: SyntheticEvent) => {
     e.preventDefault();
     console.log(title, image);
-    await fetch("http://localhost:8000/api/products", {
-      method: "POST",
+    await fetch(`http://localhost:8000/api/products/${params.id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -30,6 +46,7 @@ const ProductCreate = () => {
           <input
             type="text"
             className="form-control"
+            defaultValue={title}
             name="title"
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -39,6 +56,7 @@ const ProductCreate = () => {
           <input
             type="text"
             className="form-control"
+            defaultValue={image}
             name="image"
             onChange={(e) => setImage(e.target.value)}
           />
@@ -49,4 +67,4 @@ const ProductCreate = () => {
   );
 };
 
-export default ProductCreate;
+export default ProductEdit;

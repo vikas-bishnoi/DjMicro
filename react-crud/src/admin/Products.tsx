@@ -60,6 +60,12 @@ const Products = () => {
                   <td>{product.title}</td>
                   <td>{product.likes}</td>
                   <td>
+                    <Link
+                      to={`/admin/products/${product.id}/edit`}
+                      className="btn btn-sm btn-outline-secondary"
+                    >
+                      Edit
+                    </Link>
                     <a
                       href="#"
                       className="btn btn-sm btn-outline-secondary"
