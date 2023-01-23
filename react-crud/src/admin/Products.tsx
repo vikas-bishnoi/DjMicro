@@ -15,6 +15,16 @@ const Products = () => {
     getProducts();
   }, []);
 
+  const deleteProduct = async (id: number) => {
+    if (window.confirm("Are you sure you want to delete this product?")) {
+      await fetch(`http://localhost:8000/api/products/${id}`, {
+        method: "DELETE",
+      });
+
+      setProducts(products.filter((product: Product) => product.id !== id));
+    }
+  };
+
   return (
     <Wrapper>
       <h2>Section title</h2>
@@ -39,7 +49,15 @@ const Products = () => {
                   </td>
                   <td>{product.title}</td>
                   <td>{product.likes}</td>
-                  <td></td>
+                  <td>
+                    <a
+                      href="#"
+                      className="btn btn-sm btn-outline-secondary"
+                      onClick={() => deleteProduct(product.id)}
+                    >
+                      Delete
+                    </a>
+                  </td>
                 </tr>
               );
             })}
