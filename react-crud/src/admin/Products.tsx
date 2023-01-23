@@ -57,7 +57,7 @@ const Products = () => {
                   <td>
                     <img src={product.image} alt={product.title} height="180" />
                   </td>
-                  <td>{product.title}</td>
+                  <td>{product.image}</td>
                   <td>{product.likes}</td>
                   <td>
                     <Link
